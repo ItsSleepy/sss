@@ -8,4 +8,12 @@ use Illuminate\Database\Eloquent\Model;
 class ArmamentConfig extends Model
 {
     use HasFactory;
+
+    public function weapon(){
+        return $this->belongsTo(Weapon::class);
+    }
+
+    public function vehicle(){
+        return $this->belongsTo(Vehicle::class);
+    }
 }
