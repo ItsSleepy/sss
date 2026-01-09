@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('armament_configs', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('vehicle_id')->constrained()->onDelete('cascade');
+            $table->foreignId('weapon_id')->constrained()->onDelete('cascade');
+            $table->string('location');
+            $table->integer('quantity')->default(1);
             $table->timestamps();
         });
     }

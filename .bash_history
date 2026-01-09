@@ -188,3 +188,28 @@ php artisan make:model Weapon -mcr
 php artisan make:model ArmamentConfig -mcr
 php artisan migrate
 sudo mysql -u root
+php artisan make:seeder MilitarySeeder
+php tinker
+php artisan tinker
+cd homeassignment
+cd homeAssignment
+php artisan tinker
+php artisan make:seeder MilitarySeeder
+php artisan db:seed --class=MilitarySeeder
+php artisan migrate:fresh --seed --class=MilitarySeeder
+sudo mysql -u root -p#
+php artisan config:clear
+php artisan migrate:fresh --seed --class=MilitarySeeder
+php artisan migrate:fresh
+php artisan db:seed --class=MilitarySeeder
+php artisan migrate:fresh --seed --class=MilitarySeeder
+php artisan db:seed --class=MilitarySeeder
+cd /home/sss/homeAssignment && php artisan db:seed --class=MilitarySeeder 2>&1
+cd /home/sss/homeAssignment && php artisan migrate:status
+cd /home/sss/homeAssignment && php artisan tinker --execute="echo 'Weapons: ' . App\Models\Weapon::count() . PHP_EOL; echo 'Vehicles: ' . App\Models\Vehicle::count() . PHP_EOL; echo 'Manufacturers: ' . App\Models\Manufacturer::count() . PHP_EOL;"
+cd /home/sss/homeAssignment && php artisan migrate:fresh --seed
+cd /home/sss/homeAssignment && php artisan tinker --execute="echo 'Manufacturers: ' . App\Models\Manufacturer::count() . PHP_EOL; echo 'Vehicles: ' . App\Models\Vehicle::count() . PHP_EOL; echo 'Weapons: ' . App\Models\Weapon::count() . PHP_EOL; echo 'Armament Configs: ' . App\Models\ArmamentConfig::count() . PHP_EOL;"
+cd /home/sss/homeAssignment && php artisan db:seed --class=MilitarySeeder
+cd /home/sss/homeAssignment && php artisan migrate:fresh && php artisan db:seed --class=MilitarySeeder
+sleep 2 && cd /home/sss/homeAssignment && php artisan tinker --execute="echo 'Manufacturers: ' . App\Models\Manufacturer::count() . PHP_EOL; echo 'Vehicles: ' . App\Models\Vehicle::count() . PHP_EOL; echo 'Weapons: ' . App\Models\Weapon::count() . PHP_EOL; echo 'Armament Configs: ' . App\Models\ArmamentConfig::count() . PHP_EOL;"
+php artisan serve --host 0.0.0.0 --port 8000

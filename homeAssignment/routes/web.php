@@ -14,5 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/vehicles');
 });
+
+Route::resource('vehicles', App\Http\Controllers\VehicleController::class);

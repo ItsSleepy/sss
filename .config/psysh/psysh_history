@@ -362,3 +362,5 @@ exit
 $company
 $company
 $Company
+php\040artisan\040make:seeder\040MilitarySeeder
+exit

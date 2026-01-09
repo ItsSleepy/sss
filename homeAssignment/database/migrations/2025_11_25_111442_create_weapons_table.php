@@ -13,6 +13,11 @@ return new class extends Migration
     {
         Schema::create('weapons', function (Blueprint $table) {
             $table->id();
+            $table->foreignId('manufacturer_id')->constrained()->onDelete('cascade');
+            $table->string('weapon_name');
+            $table->string('slug')->unique();
+            $table->string('weapon_type');
+            $table->string('caliber');
             $table->timestamps();
         });
     }

@@ -9,6 +9,13 @@ class Manufacturer extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'country_of_origin',
+        'is_prime_contractor',
+        'website_url'
+    ];
+
     public function weapons(){
         return $this->hasMany(Weapon::class);
     }

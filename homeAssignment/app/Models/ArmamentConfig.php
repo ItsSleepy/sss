@@ -9,6 +9,13 @@ class ArmamentConfig extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'weapon_id',
+        'vehicle_id',
+        'location',
+        'quantity'
+    ];
+
     public function weapon(){
         return $this->belongsTo(Weapon::class);
     }
