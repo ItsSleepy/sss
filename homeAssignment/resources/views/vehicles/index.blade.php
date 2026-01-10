@@ -24,6 +24,17 @@
                     <a href="{{ route('vehicles.show', $vehicle->id) }}" class="btn btn-outline-light btn-sm">
                         View Spec Sheet <i class="fa-solid fa-arrow-right ms-1"></i>
                     </a>
+                    <a href="{{ route('vehicles.edit', $vehicle->id) }}" class="btn btn-outline-warning">
+                        <i class="fa-solid fa-pen-to-square me-1"></i> Edit Specs
+                    </a>
+
+                    <form action="{{ route('vehicles.destroy', $vehicle->id) }}" method="POST" class="d-inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="btn btn-outline-danger" onclick="return confirm('Are you sure you want to decommission this vehicle?')">
+                            <i class="fa-solid fa-trash"></i>
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

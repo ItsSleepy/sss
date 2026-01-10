@@ -213,3 +213,5 @@ cd /home/sss/homeAssignment && php artisan db:seed --class=MilitarySeeder
 cd /home/sss/homeAssignment && php artisan migrate:fresh && php artisan db:seed --class=MilitarySeeder
 sleep 2 && cd /home/sss/homeAssignment && php artisan tinker --execute="echo 'Manufacturers: ' . App\Models\Manufacturer::count() . PHP_EOL; echo 'Vehicles: ' . App\Models\Vehicle::count() . PHP_EOL; echo 'Weapons: ' . App\Models\Weapon::count() . PHP_EOL; echo 'Armament Configs: ' . App\Models\ArmamentConfig::count() . PHP_EOL;"
 php artisan serve --host 0.0.0.0 --port 8000
+cd homeAssignment
+php artisan serve --host 0.0.0.0 --port 8000
