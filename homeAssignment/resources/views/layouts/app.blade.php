@@ -26,9 +26,20 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="{{ route('vehicles.index') }}">Vehicles</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Manufacturers</a></li>
-                    <li class="nav-item"><a class="nav-link" href="#">Weapons</a></li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('vehicles.*') ? 'active text-warning fw-bold' : '' }}" 
+                        href="{{ route('vehicles.index') }}">Vehicles</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('manufacturers.*') ? 'active text-warning fw-bold' : '' }}" 
+                        href="{{ route('manufacturers.index') }}">Manufacturers</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link {{ request()->routeIs('weapons.*') ? 'active text-warning fw-bold' : '' }}" 
+                        href="{{ route('weapons.index') }}">Weapons</a>
+                    </li>
                 </ul>
             </div>
         </div>

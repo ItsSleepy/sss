@@ -215,3 +215,7 @@ sleep 2 && cd /home/sss/homeAssignment && php artisan tinker --execute="echo 'Ma
 php artisan serve --host 0.0.0.0 --port 8000
 cd homeAssignment
 php artisan serve --host 0.0.0.0 --port 8000
+cd homeAssignment
+php artisan serve --host 0.0.0.0 --port 8000
+cd homeAssignment
+php artisan serve --host 0.0.0.0 --port 8000

@@ -18,3 +18,5 @@ Route::get('/', function () {
 });
 
 Route::resource('vehicles', App\Http\Controllers\VehicleController::class);
+Route::resource('manufacturers', App\Http\Controllers\ManufacturerController::class);
+Route::resource('weapons', App\Http\Controllers\WeaponController::class);

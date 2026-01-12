@@ -7,59 +7,66 @@ use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $manufacturers = Manufacturer::all();
+        return view('manufacturers.index', compact('manufacturers'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        //
+        return view('manufacturers.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'country_of_origin' => 'required|string',
+            'website_url' => 'nullable|url',
+            'is_prime_contractor' => 'boolean'
+        ]);
+
+        $validated['is_prime_contractor'] = $request->has('is_prime_contractor');
+
+        Manufacturer::create($validated);
+
+        return redirect()->route('vehicles.index')->with('success', 'Manufacturer Partner Added!');
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Manufacturer $manufacturer)
+    public function show($id)
     {
-        //
+        $manufacturer = Manufacturer::with(['vehicles', 'weapons'])->findOrFail($id);
+        return view('manufacturers.show', compact('manufacturer'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Manufacturer $manufacturer)
+    public function edit($id)
     {
-        //
+        $manufacturer = Manufacturer::findOrFail($id);
+        return view('manufacturers.edit', compact('manufacturer'));
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Manufacturer $manufacturer)
+    public function update(Request $request, $id)
     {
-        //
+        $manufacturer = Manufacturer::findOrFail($id);
+        
+        $validated = $request->validate([
+            'name' => 'required|string|max:255',
+            'country_of_origin' => 'required|string',
+            'website_url' => 'nullable|url',
+        ]);
+        
+        $validated['is_prime_contractor'] = $request->has('is_prime_contractor');
+
+        $manufacturer->update($validated);
+
+        return redirect()->route('manufacturers.index')->with('success', 'Manufacturer updated.');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Manufacturer $manufacturer)
+    public function destroy($id)
     {
-        //
+        $manufacturer = Manufacturer::findOrFail($id);
+        $manufacturer->delete();
+        return redirect()->route('manufacturers.index')->with('success', 'Manufacturer deleted.');
     }
 }
