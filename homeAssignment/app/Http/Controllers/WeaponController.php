@@ -17,7 +17,6 @@ class WeaponController extends Controller
 
     public function create()
     {
-        // We need manufacturers to populate the dropdown
         $manufacturers = Manufacturer::all();
         return view('weapons.create', compact('manufacturers'));
     }
@@ -40,7 +39,6 @@ class WeaponController extends Controller
 
     public function show($id)
     {
-        // Load the weapon AND the vehicles that use it
         $weapon = Weapon::with(['manufacturer', 'vehicles'])->findOrFail($id);
         return view('weapons.show', compact('weapon'));
     }
@@ -57,7 +55,7 @@ class WeaponController extends Controller
         $weapon = Weapon::findOrFail($id);
         
         $validated = $request->validate([
-            'weapon_name' => 'required|string|max:255|unique:weapons,weapon_name,'.$id, // Ignore current ID
+            'weapon_name' => 'required|string|max:255|unique:weapons,weapon_name,'.$id,
             'manufacturer_id' => 'required|exists:manufacturers,id',
             'weapon_type' => 'required',
             'caliber' => 'required',

@@ -12,12 +12,8 @@ use App\Models\Weapon;
 
 class MilitarySeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     */
     public function run(): void
     {
-        //Manufacturers Population
         $gd = Manufacturer::create([
             'name' => 'General Dynamics',
             'country_of_origin' => 'USA',
@@ -39,7 +35,6 @@ class MilitarySeeder extends Seeder
             'website_url' => 'https://www.fnherstal.com'
         ]);
 
-        //Weapons Population
         $cannon = Weapon::create([
             'manufacturer_id' => $rheinmetall->id,
             'weapon_name' => 'R120mm L/55 Tank Gun',
@@ -56,7 +51,6 @@ class MilitarySeeder extends Seeder
             'caliber' => '7.62mm'
         ]);
 
-        //Vehicles Population
         $abrams = Vehicle::create([
             'manufacturer_id' => $gd->id,
             'model_name' => 'M1A2 Abrams SEPv3',
@@ -73,7 +67,6 @@ class MilitarySeeder extends Seeder
             'unit_cost' => 15000000
         ]);
 
-        //Assigning Weapons with Vehicles
         $abrams->weapons()->attach($cannon->id, ['location' => 'Main Turret', 'quantity' => 1]);
         $abrams->weapons()->attach($machineGun->id, ['location' => 'Coaxial Mount', 'quantity' => 1]);
 

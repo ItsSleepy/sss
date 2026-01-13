@@ -25,12 +25,12 @@
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Model Designation</label>
                             <input type="text" name="model_name" class="form-control bg-dark text-light border-secondary" 
-                                   value="{{ old('model_name', $vehicle->model_name) }}">
+                                   value="{{ old('model_name', $vehicle->model_name) }}" required>
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label text-warning small text-uppercase">Prime Contractor</label>
-                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary">
+                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary" required>
                                 @foreach($manufacturers as $man)
                                     <option value="{{ $man->id }}" 
                                         {{ $vehicle->manufacturer_id == $man->id ? 'selected' : '' }}>
@@ -42,7 +42,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Classification</label>
-                            <select name="vehicle_type" class="form-select bg-dark text-light border-secondary">
+                            <select name="vehicle_type" class="form-select bg-dark text-light border-secondary" required>
                                 @foreach(['MBT', 'IFV', 'APC', 'Artillery'] as $type)
                                     <option value="{{ $type }}" {{ $vehicle->vehicle_type == $type ? 'selected' : '' }}>
                                         {{ $type }}
@@ -56,7 +56,7 @@
                             <div class="input-group">
                                 <span class="input-group-text bg-secondary border-secondary text-light">$</span>
                                 <input type="number" name="unit_cost" class="form-control bg-dark text-light border-secondary" 
-                                       value="{{ old('unit_cost', $vehicle->unit_cost) }}">
+                                       value="{{ old('unit_cost', $vehicle->unit_cost) }}" required min="0">
                             </div>
                         </div>
                     </div>

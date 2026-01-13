@@ -7,12 +7,12 @@
         
         <div class="mb-3">
             <label>Designation</label>
-            <input type="text" name="weapon_name" class="form-control bg-dark text-light" value="{{ $weapon->weapon_name }}">
+            <input type="text" name="weapon_name" class="form-control bg-dark text-light" value="{{ $weapon->weapon_name }}" required>
         </div>
 
         <div class="mb-3">
             <label>Manufacturer</label>
-            <select name="manufacturer_id" class="form-select bg-dark text-light">
+            <select name="manufacturer_id" class="form-select bg-dark text-light" required>
                 @foreach($manufacturers as $man)
                     <option value="{{ $man->id }}" {{ $weapon->manufacturer_id == $man->id ? 'selected' : '' }}>
                         {{ $man->name }}
@@ -25,14 +25,14 @@
             <div class="col-6 mb-3">
                 <label>Type</label>
                 <select name="weapon_type" class="form-select bg-dark text-light">
-                    @foreach(['Cannon', 'Machine Gun', 'Missile Launcher'] as $type)
-                        <option {{ $weapon->weapon_type == $type ? 'selected' : '' }}>{{ $type }}</option>
+                    @foreach(['Cannon', 'Machine Gun', 'Missile Launcher', 'Autocannon'] as $type)
+                        <option value="{{ $type }}" {{ $weapon->weapon_type == $type ? 'selected' : '' }}>{{ $type }}</option>
                     @endforeach
                 </select>
             </div>
             <div class="col-6 mb-3">
                 <label>Caliber</label>
-                <input type="text" name="caliber" class="form-control bg-dark text-light" value="{{ $weapon->caliber }}">
+                <input type="text" name="caliber" class="form-control bg-dark text-light" value="{{ $weapon->caliber }}" required>
             </div>
         </div>
         

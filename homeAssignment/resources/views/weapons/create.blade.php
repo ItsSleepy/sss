@@ -24,7 +24,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Manufacturer</label>
-                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary">
+                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary" required>
                                 @foreach($manufacturers as $man)
                                     <option value="{{ $man->id }}">{{ $man->name }}</option>
                                 @endforeach
@@ -33,7 +33,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Type</label>
-                            <select name="weapon_type" class="form-select bg-dark text-light border-secondary">
+                            <select name="weapon_type" class="form-select bg-dark text-light border-secondary" required>
                                 <option>Cannon</option>
                                 <option>Machine Gun</option>
                                 <option>Missile Launcher</option>
