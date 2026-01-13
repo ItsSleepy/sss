@@ -69,7 +69,9 @@
             <div class="card military-card h-100">
                 <div class="card-header bg-dark text-light border-secondary text-uppercase fw-bold d-flex justify-content-between align-items-center">
                     <span><i class="fa-solid fa-crosshairs me-2 text-danger"></i> Armament Configuration</span>
-                    <button class="btn btn-sm btn-outline-secondary disabled" title="Feature coming soon">Manage Loadout</button>
+                    <a href="{{ route('vehicles.armament', $vehicle->id) }}" class="btn btn-sm btn-outline-warning">
+                        <i class="fa-solid fa-gear me-1"></i> Manage Loadout
+                    </a>
                 </div>
                 
                 @if($vehicle->weapons->count() > 0)

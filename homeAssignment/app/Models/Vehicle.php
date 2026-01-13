@@ -27,7 +27,7 @@ class Vehicle extends Model
 
     public function weapons(){
         return $this->belongsToMany(Weapon::class, 'armament_configs')
-                    ->withPivot('location', 'quantity')
+                    ->withPivot('id', 'location', 'quantity')
                     ->withTimestamps();
     }
 }

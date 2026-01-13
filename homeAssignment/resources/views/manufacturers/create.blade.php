@@ -75,13 +75,18 @@
         isCountryValidated = false;
 
         // Fetch from REST Countries API
-        fetch(`https://restcountries.com/v3.1/name/${country}`)
+        fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}?fullText=true`)
+            .then(response => {
+                if (!response.ok) {
+                    return fetch(`https://restcountries.com/v3.1/name/${encodeURIComponent(country)}`);
+                }
+                return response;
+            })
             .then(response => {
                 if (!response.ok) throw new Error("Country not found");
                 return response.json();
             })
             .then(data => {
-                // SUCCESS: Country exists
                 const officialName = data[0].name.common;
                 const flag = data[0].flags.svg;
                 
