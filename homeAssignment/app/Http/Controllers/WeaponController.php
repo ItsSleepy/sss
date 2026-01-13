@@ -9,10 +9,33 @@ use Illuminate\Support\Str;
 
 class WeaponController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $weapons = Weapon::with('manufacturer')->get();
-        return view('weapons.index', compact('weapons'));
+        $query = Weapon::with('manufacturer');
+
+        if ($request->filled('search')) {
+            $query->where('weapon_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('type')) {
+            $query->where('weapon_type', $request->type);
+        }
+
+        if ($request->filled('manufacturer')) {
+            $query->where('manufacturer_id', $request->manufacturer);
+        }
+
+        $sortField = $request->get('sort', 'weapon_name');
+        $sortDirection = $request->get('direction', 'asc');
+        
+        if (in_array($sortField, ['weapon_name', 'weapon_type', 'caliber', 'created_at'])) {
+            $query->orderBy($sortField, $sortDirection);
+        }
+
+        $weapons = $query->get();
+        $manufacturers = Manufacturer::all();
+        
+        return view('weapons.index', compact('weapons', 'manufacturers'));
     }
 
     public function create()

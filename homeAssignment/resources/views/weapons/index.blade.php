@@ -8,6 +8,61 @@
     </a>
 </div>
 
+<div class="card military-card mb-4">
+    <div class="card-body">
+        <form method="GET" action="{{ route('weapons.index') }}" class="row g-3">
+            <div class="col-md-4">
+                <label class="form-label text-muted small text-uppercase">Search</label>
+                <input type="text" name="search" class="form-control bg-dark text-light border-secondary" placeholder="Search by weapon name..." value="{{ request('search') }}">
+            </div>
+            <div class="col-md-3">
+                <label class="form-label text-muted small text-uppercase">Type</label>
+                <select name="type" class="form-select bg-dark text-light border-secondary">
+                    <option value="">All Types</option>
+                    <option value="Cannon" {{ request('type') == 'Cannon' ? 'selected' : '' }}>Cannon</option>
+                    <option value="Machine Gun" {{ request('type') == 'Machine Gun' ? 'selected' : '' }}>Machine Gun</option>
+                    <option value="Missile Launcher" {{ request('type') == 'Missile Launcher' ? 'selected' : '' }}>Missile Launcher</option>
+                    <option value="Autocannon" {{ request('type') == 'Autocannon' ? 'selected' : '' }}>Autocannon</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label class="form-label text-muted small text-uppercase">Manufacturer</label>
+                <select name="manufacturer" class="form-select bg-dark text-light border-secondary">
+                    <option value="">All Manufacturers</option>
+                    @foreach($manufacturers as $man)
+                        <option value="{{ $man->id }}" {{ request('manufacturer') == $man->id ? 'selected' : '' }}>{{ $man->name }}</option>
+                    @endforeach
+                </select>
+            </div>
+            <div class="col-md-2">
+                <label class="form-label text-muted small text-uppercase">Sort By</label>
+                <select name="sort" class="form-select bg-dark text-light border-secondary">
+                    <option value="weapon_name" {{ request('sort') == 'weapon_name' ? 'selected' : '' }}>Name</option>
+                    <option value="weapon_type" {{ request('sort') == 'weapon_type' ? 'selected' : '' }}>Type</option>
+                    <option value="caliber" {{ request('sort') == 'caliber' ? 'selected' : '' }}>Caliber</option>
+                    <option value="created_at" {{ request('sort') == 'created_at' ? 'selected' : '' }}>Date Added</option>
+                </select>
+            </div>
+            <div class="col-md-12 d-flex gap-2">
+                <button type="submit" class="btn btn-primary">
+                    <i class="fa-solid fa-filter me-1"></i> Apply Filters
+                </button>
+                <a href="{{ route('weapons.index') }}" class="btn btn-outline-secondary">
+                    <i class="fa-solid fa-rotate-right me-1"></i> Reset
+                </a>
+                <input type="hidden" name="direction" value="{{ request('direction', 'asc') }}">
+                <button type="button" class="btn btn-outline-danger" onclick="toggleSort()">
+                    @if(request('direction') == 'desc')
+                        <i class="fa-solid fa-arrow-up-z-a me-1"></i> Z-A
+                    @else
+                        <i class="fa-solid fa-arrow-down-a-z me-1"></i> A-Z
+                    @endif
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
 <div class="row g-4">
     @foreach($weapons as $weapon)
     <div class="col-md-6">
@@ -37,4 +92,12 @@
     </div>
     @endforeach
 </div>
+
+<script>
+function toggleSort() {
+    const input = document.querySelector('input[name="direction"]');
+    input.value = input.value === 'asc' ? 'desc' : 'asc';
+    document.querySelector('form').submit();
+}
+</script>
 @endsection

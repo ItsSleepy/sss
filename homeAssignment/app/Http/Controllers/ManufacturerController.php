@@ -7,9 +7,29 @@ use Illuminate\Http\Request;
 
 class ManufacturerController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $manufacturers = Manufacturer::all();
+        $query = Manufacturer::query();
+
+        if ($request->filled('search')) {
+            $query->where('name', 'like', '%' . $request->search . '%')
+                  ->orWhere('country_of_origin', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('role')) {
+            $isPrime = $request->role === 'prime';
+            $query->where('is_prime_contractor', $isPrime);
+        }
+
+        $sortField = $request->get('sort', 'name');
+        $sortDirection = $request->get('direction', 'asc');
+        
+        if (in_array($sortField, ['name', 'country_of_origin', 'created_at'])) {
+            $query->orderBy($sortField, $sortDirection);
+        }
+
+        $manufacturers = $query->get();
+        
         return view('manufacturers.index', compact('manufacturers'));
     }
 

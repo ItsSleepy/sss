@@ -11,10 +11,33 @@ use Illuminate\Support\Str;
 
 class VehicleController extends Controller
 {
-    public function index()
+    public function index(Request $request)
     {
-        $vehicles = Vehicle::with('manufacturer')->get();
-        return view('vehicles.index', compact('vehicles'));
+        $query = Vehicle::with('manufacturer');
+
+        if ($request->filled('search')) {
+            $query->where('model_name', 'like', '%' . $request->search . '%');
+        }
+
+        if ($request->filled('type')) {
+            $query->where('vehicle_type', $request->type);
+        }
+
+        if ($request->filled('manufacturer')) {
+            $query->where('manufacturer_id', $request->manufacturer);
+        }
+
+        $sortField = $request->get('sort', 'model_name');
+        $sortDirection = $request->get('direction', 'asc');
+        
+        if (in_array($sortField, ['model_name', 'vehicle_type', 'unit_cost', 'created_at'])) {
+            $query->orderBy($sortField, $sortDirection);
+        }
+
+        $vehicles = $query->get();
+        $manufacturers = Manufacturer::all();
+        
+        return view('vehicles.index', compact('vehicles', 'manufacturers'));
     }
 
     public function show($id)
