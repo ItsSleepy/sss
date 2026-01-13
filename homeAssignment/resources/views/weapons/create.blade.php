@@ -19,12 +19,12 @@
                     <div class="row g-3">
                         <div class="col-md-12">
                             <label class="form-label text-muted small text-uppercase">Weapon Designation</label>
-                            <input type="text" name="weapon_name" class="form-control bg-dark text-light border-secondary" placeholder="e.g. 120mm Smoothbore" required>
+                            <input type="text" name="weapon_name" class="form-control bg-dark text-light border-secondary" placeholder="e.g. 120mm Smoothbore">
                         </div>
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Manufacturer</label>
-                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary" required>
+                            <select name="manufacturer_id" class="form-select bg-dark text-light border-secondary">
                                 @foreach($manufacturers as $man)
                                     <option value="{{ $man->id }}">{{ $man->name }}</option>
                                 @endforeach
@@ -33,7 +33,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Type</label>
-                            <select name="weapon_type" class="form-select bg-dark text-light border-secondary" required>
+                            <select name="weapon_type" class="form-select bg-dark text-light border-secondary">
                                 <option>Cannon</option>
                                 <option>Machine Gun</option>
                                 <option>Missile Launcher</option>
@@ -43,7 +43,7 @@
 
                         <div class="col-md-6">
                             <label class="form-label text-muted small text-uppercase">Caliber</label>
-                            <input type="text" name="caliber" class="form-control bg-dark text-light border-secondary" placeholder="e.g. 120mm, 7.62mm" required>
+                            <input type="text" name="caliber" class="form-control bg-dark text-light border-secondary" placeholder="e.g. 120mm, 7.62mm">
                         </div>
                     </div>
 

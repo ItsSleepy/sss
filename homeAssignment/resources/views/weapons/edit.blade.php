@@ -7,12 +7,12 @@
         
         <div class="mb-3">
             <label>Designation</label>
-            <input type="text" name="weapon_name" class="form-control bg-dark text-light" value="{{ $weapon->weapon_name }}" required>
+            <input type="text" name="weapon_name" class="form-control bg-dark text-light" value="{{ $weapon->weapon_name }}">
         </div>
 
         <div class="mb-3">
             <label>Manufacturer</label>
-            <select name="manufacturer_id" class="form-select bg-dark text-light" required>
+            <select name="manufacturer_id" class="form-select bg-dark text-light">
                 @foreach($manufacturers as $man)
                     <option value="{{ $man->id }}" {{ $weapon->manufacturer_id == $man->id ? 'selected' : '' }}>
                         {{ $man->name }}
@@ -32,7 +32,7 @@
             </div>
             <div class="col-6 mb-3">
                 <label>Caliber</label>
-                <input type="text" name="caliber" class="form-control bg-dark text-light" value="{{ $weapon->caliber }}" required>
+                <input type="text" name="caliber" class="form-control bg-dark text-light" value="{{ $weapon->caliber }}">
             </div>
         </div>
         

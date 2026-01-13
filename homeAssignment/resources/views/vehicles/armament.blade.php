@@ -26,7 +26,7 @@
 
                         <div class="mb-3">
                             <label class="form-label text-muted small text-uppercase">Select Weapon</label>
-                            <select name="weapon_id" class="form-select bg-dark text-light border-secondary" required>
+                            <select name="weapon_id" class="form-select bg-dark text-light border-secondary">
                                 <option value="" selected disabled>Choose weapon...</option>
                                 @foreach($availableWeapons as $weapon)
                                     <option value="{{ $weapon->id }}">
@@ -38,12 +38,12 @@
 
                         <div class="mb-3">
                             <label class="form-label text-muted small text-uppercase">Mount Location</label>
-                            <input type="text" name="location" class="form-control bg-dark text-light border-secondary" placeholder="e.g., Main Turret, Coaxial Mount" required>
+                            <input type="text" name="location" class="form-control bg-dark text-light border-secondary" placeholder="e.g., Main Turret, Coaxial Mount">
                         </div>
 
                         <div class="mb-3">
                             <label class="form-label text-muted small text-uppercase">Quantity</label>
-                            <input type="number" name="quantity" class="form-control bg-dark text-light border-secondary" value="1" min="1" required>
+                            <input type="number" name="quantity" class="form-control bg-dark text-light border-secondary" value="1">
                         </div>
 
                         <div class="d-grid">

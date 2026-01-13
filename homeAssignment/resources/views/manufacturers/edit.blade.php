@@ -15,13 +15,13 @@
 
                     <div class="mb-3">
                         <label class="form-label text-muted small text-uppercase">Company Name</label>
-                        <input type="text" name="name" class="form-control bg-dark text-light border-secondary" placeholder="e.g. Lockheed Martin" value="{{ old('name', $manufacturer->name) }}" required>
+                        <input type="text" name="name" class="form-control bg-dark text-light border-secondary" placeholder="e.g. Lockheed Martin" value="{{ old('name', $manufacturer->name) }}">
                     </div>
 
                     <div class="mb-3">
                         <label class="form-label text-warning small text-uppercase">Headquarters Location</label>
                         <div class="input-group">
-                            <input type="text" id="countryInput" name="country_of_origin" class="form-control bg-dark text-light border-secondary" placeholder="Type country (e.g. France)..." value="{{ old('country_of_origin', $manufacturer->country_of_origin) }}" required>
+                            <input type="text" id="countryInput" name="country_of_origin" class="form-control bg-dark text-light border-secondary" placeholder="Type country (e.g. France)..." value="{{ old('country_of_origin', $manufacturer->country_of_origin) }}">
                             <button type="button" class="btn btn-secondary" id="checkCountryBtn">
                                 Verify <i class="fa-solid fa-magnifying-glass"></i>
                             </button>
