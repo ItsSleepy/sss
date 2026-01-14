@@ -1,7 +1,0 @@
-# VS Code server files
-.vscode-server/
-.vscode/
-
-# OS files
-.DS_Store
-Thumbs.db
